@@ -21,7 +21,7 @@
             --accent-blue: #38bdf8;
             --accent-indigo: #6366f1;
             --accent-glow: rgba(56, 189, 248, 0.35);
-            --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #6366f1 100%);
+            --accent-gradient: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-indigo) 100%);
             --btn-glow: rgba(99, 102, 241, 0.4);
 
             --border-subtle: rgba(255, 255, 255, 0.08);
@@ -38,9 +38,9 @@
         body {
             background-color: var(--bg-base);
             background-image: 
-                radial-gradient(circle at 50% -20%, rgba(56, 189, 248, 0.15), transparent 70%),
+                radial-gradient(circle at 50% -20%, var(--accent-glow), transparent 70%),
                 radial-gradient(circle at 10% 40%, rgba(99, 102, 241, 0.08), transparent 50%),
-                radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.05), transparent 50%);
+                radial-gradient(circle at 90% 80%, var(--accent-glow), transparent 50%);
             background-attachment: fixed;
             color: var(--text-main);
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -85,13 +85,67 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
-        .by-text { color: var(--text-muted); }
-        .kizeo-text { 
+        .by-text { 
+            color: #ffffff; /* Diubah menjadi warna putih */
+        }
+
+        .global-text {
             background: var(--accent-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .subtitle-divider {
+            color: var(--text-dim);
+            font-weight: 400;
+        }
+
+        /* BARIS BARU BERSAMA TEKS MG STORE96 */
+        .store-tagline {
+            margin-top: 6px;
+            font-size: 0.8125rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #ffffff; /* Menggunakan warna putih yang sama */
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        /* WHATSAPP CONTACT STYLE */
+        .wa-contact {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 14px;
+            padding: 6px 16px;
+            border-radius: 20px;
+            background: rgba(37, 211, 102, 0.1);
+            border: 1px solid rgba(37, 211, 102, 0.25);
+            color: #25D366;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .wa-contact:hover {
+            background: rgba(37, 211, 102, 0.2);
+            border-color: rgba(37, 211, 102, 0.5);
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .wa-icon {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
         }
 
         /* TOOLBAR & FILTERS */
@@ -225,6 +279,44 @@
             filter: invert(1);
         }
 
+        /* CUSTOM COLOR PICKER STYLES */
+        .color-picker-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-surface);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-subtle);
+            padding: 8px 14px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .color-input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 22px;
+            height: 22px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .color-input::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+
+        .color-input::-webkit-color-swatch {
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+        }
+
         @keyframes dice-spin {
             0% { transform: rotate(0deg) scale(1); }
             50% { transform: rotate(180deg) scale(1.2); }
@@ -263,9 +355,9 @@
 
         .card:hover { 
             background: var(--bg-card-hover);
-            border-color: rgba(56, 189, 248, 0.3);
+            border-color: var(--accent-glow);
             transform: translateY(-6px);
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 30px rgba(56, 189, 248, 0.1);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 30px var(--accent-glow);
         }
 
         .img-wrapper {
@@ -312,8 +404,8 @@
         }
 
         .tag-dynamic {
-            background: rgba(99, 102, 241, 0.8);
-            border-color: rgba(165, 180, 252, 0.3);
+            background: var(--accent-indigo);
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
         .card-title {
@@ -371,7 +463,7 @@
 
         .btn-download:hover {
             opacity: 0.95;
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+            box-shadow: 0 6px 20px var(--btn-glow);
             transform: translateY(-1px);
         }
 
@@ -511,6 +603,7 @@
             .main-logo { max-width: 290px; }
             .search-box { padding: 14px 20px 14px 48px; }
             .search-icon { left: 16px; }
+            .store-tagline { font-size: 0.75rem; }
         }
     </style>
 </head>
@@ -520,10 +613,20 @@
     <div class="logo-container" onclick="resetToMain()">
         <img src="https://raw.githubusercontent.com/HattaGG/tema-ps4-hattagamesplus/refs/heads/main/recursos/titulo.png" alt="PS4 Themes" class="main-logo">
         <div class="subtitle">
-            <span class="by-text">Library</span> Collection<span class="kizeo-text"> by mgstore</span>
+            <span class="global-text">mg STORE96</span>
+            <span class="subtitle-divider"> X </span>
+            <span class="global-text">Global PlayStation</span>
         </div>
-        </div>
-    
+        
+    </div>
+
+    <!-- Tombol WhatsApp -->
+    <a href="https://wa.me/6282152308800" target="_blank" rel="noopener noreferrer" class="wa-contact">
+        <svg class="wa-icon" viewBox="0 0 24 24">
+            <path d="M12.012 2c-5.508 0-9.989 4.478-9.99 9.984 0 1.763.459 3.483 1.332 5.001l-1.417 5.176 5.292-1.388c1.463.798 3.111 1.218 4.78 1.219h.004c5.507 0 9.988-4.479 9.989-9.985 0-2.668-1.038-5.176-2.924-7.062-1.887-1.886-4.394-2.924-7.066-2.925zm0 1.666c4.588 0 8.322 3.734 8.324 8.322-.001 2.223-.866 4.312-2.438 5.885-1.571 1.572-3.66 2.438-5.885 2.438h-.003c-1.488 0-2.946-.398-4.225-1.151l-.303-.18-3.138.822.837-3.056-.197-.314c-.829-1.321-1.267-2.852-1.267-4.421 0-4.587 3.735-8.323 8.323-8.323zm-3.606 4.752c-.198 0-.518.074-.789.37-.271.296-1.037 1.012-1.037 2.468s1.061 2.862 1.209 3.059c.148.197 2.087 3.187 5.056 4.469.706.305 1.258.487 1.688.624.709.226 1.354.194 1.864.118.568-.085 1.752-.716 2.001-1.408.247-.691.247-1.283.173-1.407-.074-.124-.271-.198-.568-.346-.296-.148-1.752-.864-2.023-.962-.271-.099-.469-.148-.667.148-.198.296-.765.962-.938 1.16-.173.197-.346.222-.642.074-.296-.148-1.252-.461-2.385-1.472-.882-.787-1.478-1.759-1.651-2.055-.173-.296-.018-.456.13-.604.133-.133.296-.346.444-.518.148-.173.198-.296.296-.494.099-.198.049-.37-.025-.518-.074-.148-.667-1.604-.913-2.196-.241-.578-.487-.5-.667-.509l-.568-.008z"/>
+        </svg>
+        082152308800
+    </a>
 </header>
 
 <div class="toolbar">
@@ -545,6 +648,12 @@
             <option value="DYN">Dynamic</option>
             <option value="STA">Static</option>
         </select>
+        
+        <div class="color-picker-wrapper">
+            <span>Theme Color</span>
+            <input type="color" id="theme-color" class="color-input" value="#38bdf8">
+        </div>
+
         <button id="random-btn" class="random-button" title="Shuffle Themes">
             <img src="recursos/dado.png" alt="Randomize" class="dado-icon" onerror="this.style.display='none'; this.parentNode.innerText='🎲'">
         </button>
@@ -582,10 +691,22 @@
     const sortSelect = document.getElementById('sort-select');
     const catSelect = document.getElementById('cat-select');
     const randomBtn = document.getElementById('random-btn');
+    const colorInput = document.getElementById('theme-color');
     const paginationContainer = document.getElementById('pagination');
     const modal = document.getElementById('preview-modal');
     const modalImg = document.getElementById('modal-img');
     const noResults = document.getElementById('no-results');
+
+    colorInput.addEventListener('input', (e) => {
+        const selectedColor = e.target.value;
+        document.documentElement.style.setProperty('--accent-blue', selectedColor);
+        
+        const r = parseInt(selectedColor.slice(1, 3), 16);
+        const g = parseInt(selectedColor.slice(3, 5), 16);
+        const b = parseInt(selectedColor.slice(5, 7), 16);
+        document.documentElement.style.setProperty('--accent-glow', `rgba(${r}, ${g}, ${b}, 0.35)`);
+        document.documentElement.style.setProperty('--btn-glow', `rgba(${r}, ${g}, ${b}, 0.4)`);
+    });
 
     function fixPath(name) {
         return encodeURIComponent(name)
